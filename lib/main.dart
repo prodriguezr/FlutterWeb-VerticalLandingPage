@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:vertical_landing_page/ui/pages/pages.dart';
+import 'package:vertical_landing_page/router/router.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    MyRouter.configureRoutes();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      home: HomePage(),
+      title: 'Landing Page',
+      initialRoute: '/home',
+      onGenerateRoute: MyRouter.router.generator,
     );
   }
 }
