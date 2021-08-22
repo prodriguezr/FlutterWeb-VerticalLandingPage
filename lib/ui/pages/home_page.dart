@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:vertical_landing_page/providers/page_provider.dart';
 import 'package:vertical_landing_page/ui/shared/shared.dart';
 import 'package:vertical_landing_page/ui/views/views.dart';
 
@@ -38,14 +40,17 @@ class HomePage extends StatelessWidget {
 class _HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final pageProvider = Provider.of<PageProvider>(context, listen: false);
+
     return PageView(
+      controller: pageProvider.pageController,
       scrollDirection: Axis.vertical,
       children: [
         HomeView(),
-        ContactView(),
-        PricingView(),
-        LocationView(),
         AboutView(),
+        PricingView(),
+        ContactView(),
+        LocationView(),
       ],
     );
   }

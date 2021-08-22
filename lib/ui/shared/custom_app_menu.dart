@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'package:vertical_landing_page/providers/providers.dart';
 import 'package:vertical_landing_page/ui/shared/custom_menu_item.dart';
 
 class CustomAppMenu extends StatefulWidget {
@@ -23,6 +26,8 @@ class _CustomAppMenuState extends State<CustomAppMenu>
 
   @override
   Widget build(BuildContext context) {
+    final pageProvider = Provider.of<PageProvider>(context, listen: false);
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -48,31 +53,41 @@ class _CustomAppMenuState extends State<CustomAppMenu>
               if (isOpen) ...[
                 CustomMenuItem(
                   text: 'Home',
-                  onPressed: () {},
+                  onPressed: () {
+                    pageProvider.goTo(0);
+                  },
                   onHoverColor: Colors.pinkAccent,
                   onNormalColor: Colors.black,
                 ),
                 CustomMenuItem(
+                  onPressed: () {
+                    pageProvider.goTo(1);
+                  },
                   text: 'About',
-                  onPressed: () {},
                   onHoverColor: Colors.pinkAccent,
                   onNormalColor: Colors.black,
                 ),
                 CustomMenuItem(
+                  onPressed: () {
+                    pageProvider.goTo(2);
+                  },
                   text: 'Pricing',
-                  onPressed: () {},
                   onHoverColor: Colors.pinkAccent,
                   onNormalColor: Colors.black,
                 ),
                 CustomMenuItem(
+                  onPressed: () {
+                    pageProvider.goTo(3);
+                  },
                   text: 'Contact',
-                  onPressed: () {},
                   onHoverColor: Colors.pinkAccent,
                   onNormalColor: Colors.black,
                 ),
                 CustomMenuItem(
+                  onPressed: () {
+                    pageProvider.goTo(4);
+                  },
                   text: 'Location',
-                  onPressed: () {},
                   onHoverColor: Colors.pinkAccent,
                   onNormalColor: Colors.black,
                 ),
